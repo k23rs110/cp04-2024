@@ -38,6 +38,18 @@
         $('#btnC').click(function(e) {
             btnCClick(e);
         });
+
+        $('#btnD').click(function(e) {
+            btnDClick(e);
+        });
+
+        $('#btnE').click(function(e) {
+            btnDClick(e);
+        });
+
+        $('#btnF').click(function(e) {
+            btnDClick(e);
+        });
         init();
     });
     
@@ -155,13 +167,14 @@
     var period = 0; 
     var rest = 0;
     var etime = 0;
+    var restart = false; 
     
     // ボタンの初期設定
     function init(){
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
-        
+        //$('#btnD').prop('disabled', true);
     }
 
     // Alarmの処理
@@ -183,22 +196,40 @@
     function btnAClick(e){
         active = true; 
         startTime = new Date();  
+        $('#btnD').prop('disabled', false);
     }
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
         active = false; 
-        
+        restart=true;
     }
 
     // ButtonCがクリックされた時の処理
     function btnCClick(e){
         alarm();
-        active = false; period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() ); 
+        active = false; period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() );
+        
         $("#time").html("経過時間： 0");
         $("#remain").html("残り時間： " + period);
     }
-    
+
+    function btnDClick(e){
+        active = true;
+        startTime = new Date()-etime*1000;
+    }
+
+    function btnEClick(e){
+        period = 60* parseInt( 3 ) +parseInt(0);
+        $("#time").html("経過時間： 0");
+        $("#remain").html("残り時間： " + period);
+    }
+
+    function btnFClick(e){
+        period = 60* parseInt( 3 ) +parseInt(0);
+        $("#time").html("経過時間： 0");
+        $("#remain").html("残り時間： " + period);
+    }
  
     // 繰り返し実行する処理
     function timer(){  
@@ -227,7 +258,10 @@
     <div id="time">Time</div>
     <button id="btnA">Start</button>  
     <button id="btnB">Stop</button>  
-    <button id="btnC">Set</button>  
+    <button id="btnC">Set</button>
+    <button id="btnD">restart</button>    
+    <button id="btnE">10</button>    
+    <button id="btnF">60</button>    
     <input type="number" id="minute" value=0 >
     <input type="number" id="second" value=15 >
 </body>
