@@ -44,11 +44,11 @@
         });
 
         $('#btnE').click(function(e) {
-            btnDClick(e);
+            btnEClick(e);
         });
 
         $('#btnF').click(function(e) {
-            btnDClick(e);
+            btnFClick(e);
         });
         init();
     });
@@ -220,13 +220,13 @@
     }
 
     function btnEClick(e){
-        period = 60* parseInt( 3 ) +parseInt(0);
+        period += 10
         $("#time").html("経過時間： 0");
         $("#remain").html("残り時間： " + period);
     }
 
     function btnFClick(e){
-        period = 60* parseInt( 3 ) +parseInt(0);
+        period += 60;
         $("#time").html("経過時間： 0");
         $("#remain").html("残り時間： " + period);
     }
@@ -263,6 +263,6 @@
     <button id="btnE">10</button>    
     <button id="btnF">60</button>    
     <input type="number" id="minute" value=0 >
-    <input type="number" id="second" value=15 >
+    <input type="number" id="second" value=0 >
 </body>
 </html>
